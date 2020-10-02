@@ -1,0 +1,111 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.0": {
+      "First-Rogue/1.0.0": {
+        "dependencies": {
+          "Microsoft.Win32.SystemEvents": "4.6.0-preview.19073.11",
+          "OpenTK": "1.1.2225",
+          "RLNET": "1.0.6",
+          "RogueSharp": "3.0.0"
+        },
+        "runtime": {
+          "First-Rogue.dll": {}
+        }
+      },
+      "Microsoft.NETCore.Platforms/3.0.0-preview.19073.11": {},
+      "Microsoft.Win32.SystemEvents/4.6.0-preview.19073.11": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "3.0.0-preview.19073.11"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll": {
+            "assemblyVersion": "4.0.1.0",
+            "fileVersion": "4.7.19.7311"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.1.0",
+            "fileVersion": "4.7.19.7311"
+          }
+        }
+      },
+      "OpenTK/1.1.2225": {
+        "runtime": {
+          "lib/net20/OpenTK.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.2225.0"
+          }
+        }
+      },
+      "RLNET/1.0.6": {
+        "dependencies": {
+          "OpenTK": "1.1.2225"
+        },
+        "runtime": {
+          "lib/RLNET.dll": {
+            "assemblyVersion": "1.0.6.0",
+            "fileVersion": "1.0.6.0"
+          }
+        }
+      },
+      "RogueSharp/3.0.0": {
+        "runtime": {
+          "lib/portable-net40+sl50+win+wpa81+wp80/RogueSharp.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "First-Rogue/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.NETCore.Platforms/3.0.0-preview.19073.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9lLkGd9xOH8kmV1p/evihvUzJxl8r0L5pPJvk4Dq/LmMjaSyeCl3kRFoqtw7/kekSlgXIPb4WO5AQR+wEwzeqA==",
+      "path": "microsoft.netcore.platforms/3.0.0-preview.19073.11",
+      "hashPath": "microsoft.netcore.platforms.3.0.0-preview.19073.11.nupkg.sha512"
+    },
+    "Microsoft.Win32.SystemEvents/4.6.0-preview.19073.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dCyi4uVl3Ur4tgeU5A1vQjbEcLXF6xh/ZJn4MkwoMUJr2Pn6n1Y7s6c+UlfCFrP+CiK53uHxMkbKLAo66y0acQ==",
+      "path": "microsoft.win32.systemevents/4.6.0-preview.19073.11",
+      "hashPath": "microsoft.win32.systemevents.4.6.0-preview.19073.11.nupkg.sha512"
+    },
+    "OpenTK/1.1.2225": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LznumONQ+XDP/mVCyqZJtaeu/4sKsrSdBC309CE7TsiKStNU4WaOQDwQ3nS85zsAoZGmsbEzrvbjH3/LibKSug==",
+      "path": "opentk/1.1.2225",
+      "hashPath": "opentk.1.1.2225.nupkg.sha512"
+    },
+    "RLNET/1.0.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uB0av8QFwSdfQrFCN7a3tk6YDwlQU0SPt3Oh7T7FUzoRwrfRSIF/albeHrlF5ZXN1XsHiUkOz7o9FIZg0plsCg==",
+      "path": "rlnet/1.0.6",
+      "hashPath": "rlnet.1.0.6.nupkg.sha512"
+    },
+    "RogueSharp/3.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-f1Zn6bkgL342FB4yVKO+DcmhL6R9wRCwuY/xZz5zybuQe9FjF3DPWPT33mj9QlNEiakOqJ9NhVmhO+23Ze0fGQ==",
+      "path": "roguesharp/3.0.0",
+      "hashPath": "roguesharp.3.0.0.nupkg.sha512"
+    }
+  }
+}
