@@ -8,6 +8,14 @@ namespace First_Rogue.Core
 {
     public class DungeonMap : Map
     {
+        public readonly List<Monster> _monsters;
+        public List<Rectangle> Rooms;
+
+        public DungeonMap()
+        {
+            Rooms = new List<Rectangle>();
+            _monsters = new List<Monster>();
+        }
 
         public void UpdatePlayerFieldOfView()
         {
@@ -23,12 +31,24 @@ namespace First_Rogue.Core
             }
         }
 
-        public void Draw(RLConsole mapConsole)
+        public void Draw(RLConsole mapConsole, RLConsole statConsole)
         {
-            mapConsole.Clear();
             foreach(Cell cell in GetAllCells())
             {
                 SetConsoleSymbolForCell(mapConsole, cell);
+            }
+
+            int i = 0;
+
+            foreach(Monster monster in _monsters)
+            {
+                monster.Draw(mapConsole, this);
+
+                if(IsInFov(monster.X, monster.Y))
+                {
+                    monster.DrawStats(statConsole, i);
+                    i++;
+                }
             }
         }
 
@@ -61,6 +81,80 @@ namespace First_Rogue.Core
                     console.Set(cell.X, cell.Y, Colors.Wall, Colors.WallBackground, '#');
                 }
             }
+        }
+
+        public bool SetActorPosition(Actor actor, int x, int y)
+        {
+            if(GetCell(x, y).IsWalkable)
+            {
+                SetIsWalkable(actor.X, actor.Y, true);
+
+                actor.X = x;
+                actor.Y = y;
+
+                SetIsWalkable(actor.X, actor.Y, false);
+
+                if(actor is Player)
+                {
+                    UpdatePlayerFieldOfView();
+                }
+                return true;
+            }
+            return false;
+        }
+
+        private void SetIsWalkable(int x, int y, bool isWalkable)
+        {
+            Cell cell = GetCell(x, y);
+            SetCellProperties(cell.X, cell.Y, cell.IsTransparent, isWalkable, cell.IsExplored);
+        }
+
+        public void AddPlayer(Player player)
+        {
+            Game.Player = player;
+            SetIsWalkable(player.X, player.Y, false);
+            UpdatePlayerFieldOfView();
+        }
+
+        public void AddMonster( Monster monster)
+        {
+            _monsters.Add(monster);
+
+            SetIsWalkable(monster.X, monster.Y, false);
+        }
+
+        public Point GetRandomWalkableSpace(Rectangle room)
+        {
+            if (DoesRoomHaveWalkableSpacec(room))
+            {
+                for(int i = 0; i < 100; i++)
+                {
+                    int x = Game.Random.Next(1, room.Width - 2) + room.X;
+                    int y = Game.Random.Next(1, room.Height - 2) + room.Y;
+                    
+                    if(IsWalkable(x, y))
+                    {
+                        return new Point(x, y);
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        public bool DoesRoomHaveWalkableSpacec(Rectangle room)
+        {
+            for (int x = 1; x <= room.Width - 2; x++)
+            {
+                for (int y = 1; y <= room.Height - 2; y++)
+                {
+                    if (IsWalkable(x + room.X, y + room.Y))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 }

@@ -8,6 +8,8 @@ using OpenTK;
 using System.Drawing;
 using First_Rogue.Core;
 using First_Rogue.Core.Systems;
+using First_Rogue.Systems;
+using RogueSharp.Random;
 
 namespace First_Rogue
 {
@@ -32,8 +34,12 @@ namespace First_Rogue
         private static readonly int _inventoryHeight = 11;
         private static RLConsole _inventoryConsole;
 
-        public static Player Player { get; private set; }
+        public static Player Player { get; set; }
         public static DungeonMap DungeonMap { get; private set; }
+        private static bool _renderRequired = true;
+        public static CommandSystem CommandSystem { get; private set; }
+        public static MessageLog MessageLog { get; private set; }
+        public static IRandom Random { get; private set; }
 
 
         private static RLRootConsole _rootConsole;
@@ -42,11 +48,14 @@ namespace First_Rogue
         {
             string fontFileName = "terminal8x8.png";
 
-            string consoleTitle = "RogueLike Test";
+            int seed = (int)DateTime.UtcNow.Ticks;
+            Random = new DotNetRandom(seed);
 
-            Player = new Player();
+            string consoleTitle = $"RogueLike Test - Level 1 - Seed {seed}";
 
-            MapGenerator mapGenerator = new MapGenerator(_mapWidth, _mapHeight);
+            CommandSystem = new CommandSystem();
+
+            MapGenerator mapGenerator = new MapGenerator(_mapWidth, _mapHeight, 20, 13, 7 );
             DungeonMap = mapGenerator.CreateMap();
             DungeonMap.UpdatePlayerFieldOfView();
 
@@ -56,6 +65,16 @@ namespace First_Rogue
             _messageConsole = new RLConsole(_messageWidth, _messageHeight);
             _statConsole = new RLConsole(_statWidth, _statHeight);
             _inventoryConsole = new RLConsole(_inventoryWidth, _inventoryHeight);
+
+            _mapConsole.SetBackColor(0, 0, _mapWidth, _mapHeight, Colors.FloorBackground);
+            _mapConsole.Print(1, 1, "Mapa", Colors.TextHeading);
+
+            MessageLog = new MessageLog();
+            MessageLog.Add("O Errante chega no andar 1");
+            MessageLog.Add($"Level criado com a seed '{seed}'");
+
+            _inventoryConsole.SetBackColor(0, 0, _inventoryWidth, _inventoryHeight, Swatch.DbWood);
+            _inventoryConsole.Print(1, 1, "Inventario", Colors.TextHeading);
 
 
             _rootConsole.Update += OnRootConsoleUpdate;
@@ -69,34 +88,67 @@ namespace First_Rogue
 
         private static void OnRootConsoleUpdate(object sender, UpdateEventArgs e)
         {
-            _mapConsole.SetBackColor(0, 0, _mapWidth, _mapHeight, Colors.FloorBackground);
-            _mapConsole.Print(1, 1, "Mapa", Colors.TextHeading);
+            bool didPlayerAct = false;
+            RLKeyPress keyPress = _rootConsole.Keyboard.GetKeyPress();
 
-            _messageConsole.SetBackColor(0, 0, _messageWidth, _messageHeight, Swatch.DbDeepWater);
-            _messageConsole.Print(1, 1, "Mensagens", Colors.TextHeading);
+            if(keyPress != null)
+            {
+               if(keyPress.Key == RLKey.Up)
+                {
+                    didPlayerAct = CommandSystem.MovePlayer(Direction.Up);
+                }
+                else if (keyPress.Key == RLKey.Down)
+                {
+                    didPlayerAct = CommandSystem.MovePlayer(Direction.Down);
+                }
+                else if (keyPress.Key == RLKey.Left)
+                {
+                    didPlayerAct = CommandSystem.MovePlayer(Direction.Left);
+                }
+                else if (keyPress.Key == RLKey.Right)
+                {
+                    didPlayerAct = CommandSystem.MovePlayer(Direction.Right);
+                }
+                else if (keyPress.Key == RLKey.Escape)
+                {
+                    _rootConsole.Close();
+                }
+            }
 
-            _statConsole.SetBackColor(0, 0, _statWidth, _statHeight, Swatch.DbOldStone);
-            _statConsole.Print(1, 1, "Status", Colors.TextHeading);
-
-            _inventoryConsole.SetBackColor(0, 0, _inventoryWidth, _inventoryHeight, Swatch.DbWood);
-            _inventoryConsole.Print(1, 1, "Inventario", Colors.TextHeading);
-
+            if (didPlayerAct)
+            {
+                _renderRequired = true;
+            }
         }
 
         private static void OnRootConsoleRender(object sender, UpdateEventArgs e)
         {
-            DungeonMap.Draw(_mapConsole);
-            Player.Draw(_mapConsole, DungeonMap);
+
+            if (_renderRequired)
+            {
+                _mapConsole.Clear();
+                _statConsole.Clear();
+                _messageConsole.Clear();
+
+                DungeonMap.Draw(_mapConsole, _statConsole);
+                Player.Draw(_mapConsole, DungeonMap);
+                MessageLog.Draw(_messageConsole);
+
+                Player.DrawStats(_statConsole);
+
+                RLConsole.Blit(_mapConsole, 0, 0, _mapWidth, _mapHeight, _rootConsole, 0, _inventoryHeight);
+
+                RLConsole.Blit(_statConsole, 0, 0, _statWidth, _statHeight, _rootConsole, _mapWidth, 0);
+
+                RLConsole.Blit(_messageConsole, 0, 0, _messageWidth, _messageHeight, _rootConsole, 0, _screenHeight - _messageHeight);
+
+                RLConsole.Blit(_inventoryConsole, 0, 0, _inventoryWidth, _inventoryHeight, _rootConsole, 0, 0);
+
+                _rootConsole.Draw();
+
+                _renderRequired = false;
+            }
             
-            RLConsole.Blit(_mapConsole, 0, 0, _mapWidth, _mapHeight, _rootConsole, 0, _inventoryHeight);
-
-            RLConsole.Blit(_statConsole, 0, 0, _statWidth, _statHeight, _rootConsole, _mapWidth, 0);
-
-            RLConsole.Blit(_messageConsole, 0, 0, _messageWidth, _messageHeight, _rootConsole, 0, _screenHeight - _messageHeight);
-
-            RLConsole.Blit(_inventoryConsole, 0, 0, _inventoryWidth, _inventoryHeight, _rootConsole, 0, 0);
-
-            _rootConsole.Draw();
         }
 
     }
