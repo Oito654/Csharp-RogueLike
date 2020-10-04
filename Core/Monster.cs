@@ -1,4 +1,6 @@
-﻿using RLNET;
+﻿using First_Rogue.Behavior;
+using First_Rogue.Systems;
+using RLNET;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,6 +9,8 @@ namespace First_Rogue.Core
 {
     public class Monster : Actor
     {
+        public int? TurnsAlerted { get; set; }
+
         public void DrawStats(RLConsole statConsole, int position)
         {
             int yPosition = 13 + (position * 2);
@@ -20,6 +24,12 @@ namespace First_Rogue.Core
             statConsole.SetBackColor(3 + width, yPosition, remainingWidth, 1, Swatch.PrimaryDarkest);
 
             statConsole.Print(2, yPosition, $": {Name}", Swatch.DbLight);
+        }
+
+        public virtual void PerformAction(CommandSystem commandSystem)
+        {
+            var behavior = new StandardMoveAndAttack();
+            behavior.Act(this, commandSystem);
         }
     }
 }

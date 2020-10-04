@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using RLNET;
+using System.Linq;
 
 namespace First_Rogue.Core
 {
@@ -103,7 +104,7 @@ namespace First_Rogue.Core
             return false;
         }
 
-        private void SetIsWalkable(int x, int y, bool isWalkable)
+        public void SetIsWalkable(int x, int y, bool isWalkable)
         {
             Cell cell = GetCell(x, y);
             SetCellProperties(cell.X, cell.Y, cell.IsTransparent, isWalkable, cell.IsExplored);
@@ -114,6 +115,7 @@ namespace First_Rogue.Core
             Game.Player = player;
             SetIsWalkable(player.X, player.Y, false);
             UpdatePlayerFieldOfView();
+            Game.SchedulingSystem.Add(player);
         }
 
         public void AddMonster( Monster monster)
@@ -121,6 +123,7 @@ namespace First_Rogue.Core
             _monsters.Add(monster);
 
             SetIsWalkable(monster.X, monster.Y, false);
+            Game.SchedulingSystem.Add(monster);
         }
 
         public Point GetRandomWalkableSpace(Rectangle room)
@@ -155,6 +158,18 @@ namespace First_Rogue.Core
                 }
             }
             return false;
+        }
+
+        public void RemoveMonster( Monster monster)
+        {
+            _monsters.Remove(monster);
+            SetIsWalkable(monster.X, monster.Y, true);
+            Game.SchedulingSystem.Remove(monster);
+        }
+
+        public Monster GetMonsterAt(int x, int y)
+        {
+            return _monsters.FirstOrDefault(m => m.X == x && m.Y == y);
         }
     }
 }

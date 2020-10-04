@@ -7,7 +7,7 @@ using System.Text;
 
 namespace First_Rogue.Core
 {
-    public class Actor : IActor, IDrawable
+    public class Actor : IActor, IDrawable, IScheduleable
     {
 
         private int _attack;
@@ -130,6 +130,14 @@ namespace First_Rogue.Core
             set
             {
                 _speed = value;
+            }
+        }
+
+        public int Time
+        {
+            get
+            {
+                return Speed;
             }
         }
 
