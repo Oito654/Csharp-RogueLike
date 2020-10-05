@@ -11,11 +11,13 @@ namespace First_Rogue.Core
     {
         public readonly List<Monster> _monsters;
         public List<Rectangle> Rooms;
+        public List<Door> Doors { get; set; }
 
         public DungeonMap()
         {
             Rooms = new List<Rectangle>();
             _monsters = new List<Monster>();
+            Doors = new List<Door>();
         }
 
         public void UpdatePlayerFieldOfView()
@@ -34,22 +36,27 @@ namespace First_Rogue.Core
 
         public void Draw(RLConsole mapConsole, RLConsole statConsole)
         {
-            foreach(Cell cell in GetAllCells())
+            foreach (Cell cell in GetAllCells())
             {
                 SetConsoleSymbolForCell(mapConsole, cell);
             }
 
             int i = 0;
 
-            foreach(Monster monster in _monsters)
+            foreach (Monster monster in _monsters)
             {
                 monster.Draw(mapConsole, this);
 
-                if(IsInFov(monster.X, monster.Y))
+                if (IsInFov(monster.X, monster.Y))
                 {
                     monster.DrawStats(statConsole, i);
                     i++;
                 }
+            }
+
+            foreach (Door door in Doors)
+            {
+                door.Draw(mapConsole, this);
             }
         }
 
@@ -60,7 +67,7 @@ namespace First_Rogue.Core
                 return;
             }
 
-            if(IsInFov(cell.X, cell.Y))
+            if (IsInFov(cell.X, cell.Y))
             {
                 if (cell.IsWalkable)
                 {
@@ -86,16 +93,18 @@ namespace First_Rogue.Core
 
         public bool SetActorPosition(Actor actor, int x, int y)
         {
-            if(GetCell(x, y).IsWalkable)
+            if (GetCell(x, y).IsWalkable)
             {
                 SetIsWalkable(actor.X, actor.Y, true);
+                OpenDoor(actor, x, y);
 
                 actor.X = x;
                 actor.Y = y;
 
                 SetIsWalkable(actor.X, actor.Y, false);
+                OpenDoor(actor, x, y);
 
-                if(actor is Player)
+                if (actor is Player)
                 {
                     UpdatePlayerFieldOfView();
                 }
@@ -118,7 +127,7 @@ namespace First_Rogue.Core
             Game.SchedulingSystem.Add(player);
         }
 
-        public void AddMonster( Monster monster)
+        public void AddMonster(Monster monster)
         {
             _monsters.Add(monster);
 
@@ -130,12 +139,12 @@ namespace First_Rogue.Core
         {
             if (DoesRoomHaveWalkableSpacec(room))
             {
-                for(int i = 0; i < 100; i++)
+                for (int i = 0; i < 100; i++)
                 {
                     int x = Game.Random.Next(1, room.Width - 2) + room.X;
                     int y = Game.Random.Next(1, room.Height - 2) + room.Y;
-                    
-                    if(IsWalkable(x, y))
+
+                    if (IsWalkable(x, y))
                     {
                         return new Point(x, y);
                     }
@@ -160,7 +169,7 @@ namespace First_Rogue.Core
             return false;
         }
 
-        public void RemoveMonster( Monster monster)
+        public void RemoveMonster(Monster monster)
         {
             _monsters.Remove(monster);
             SetIsWalkable(monster.X, monster.Y, true);
@@ -170,6 +179,30 @@ namespace First_Rogue.Core
         public Monster GetMonsterAt(int x, int y)
         {
             return _monsters.FirstOrDefault(m => m.X == x && m.Y == y);
+        }
+
+        public Door GetDoor(int x, int y)
+        {
+            return Doors.SingleOrDefault(d => d.X == x && d.Y == y);
+        }
+
+        private void OpenDoor(Actor actor, int x, int y)
+        {
+            Door door = GetDoor(x, y);
+            if (door != null && !door.IsOpen)
+            {
+                door.IsOpen = true;
+                if (door != null && !door.IsOpen)
+                {
+                    door.IsOpen = true;
+                    var cell = GetCell(x, y);
+
+                    SetCellProperties(x, y, true, cell.IsWalkable, cell.IsExplored);
+
+                    Game.MessageLog.Add($"{actor.Name} abriu a porta");
+                }
+
+            }
         }
     }
 }
