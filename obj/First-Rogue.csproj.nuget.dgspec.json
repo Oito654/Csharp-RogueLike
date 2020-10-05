@@ -21,14 +21,14 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp2.0"
+          "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp2.0": {
+          "netcoreapp3.1": {
             "projectReferences": {}
           }
         },
@@ -39,21 +39,15 @@
         }
       },
       "frameworks": {
-        "netcoreapp2.0": {
+        "netcoreapp3.1": {
           "dependencies": {
-            "Microsoft.NETCore.App": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.0.0, )",
-              "autoReferenced": true
-            },
             "Microsoft.Win32.SystemEvents": {
               "target": "Package",
-              "version": "[4.6.0-preview.19073.11, )"
+              "version": "[4.7.0, )"
             },
             "OpenTK": {
               "target": "Package",
-              "version": "[1.1.2225, )"
+              "version": "[2.0.0, )"
             },
             "RLNET": {
               "target": "Package",
@@ -65,7 +59,7 @@
             },
             "System.Drawing.Common": {
               "target": "Package",
-              "version": "[4.5.0, )"
+              "version": "[4.7.0, )"
             }
           },
           "imports": [
@@ -78,6 +72,11 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }

@@ -1,0 +1,55 @@
+{
+  "version": 2,
+  "dgSpecHash": "o+JQDCsKWoYHg/Ho4wYQZdRTfxspSqkjyrUeR4R5jUcKW5FYXL/Y8s7yR1ghoLUybRQEOtfSXbloFbEXMM3vJw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\octavius.alimari\\source\\repos\\First-Rogue\\First-Rogue.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\octavius.alimari\\.nuget\\packages\\microsoft.netcore.app\\2.0.0\\microsoft.netcore.app.2.0.0.nupkg.sha512",
+    "C:\\Users\\octavius.alimari\\.nuget\\packages\\microsoft.netcore.dotnetapphost\\2.0.0\\microsoft.netcore.dotnetapphost.2.0.0.nupkg.sha512",
+    "C:\\Users\\octavius.alimari\\.nuget\\packages\\microsoft.netcore.dotnethostpolicy\\2.0.0\\microsoft.netcore.dotnethostpolicy.2.0.0.nupkg.sha512",
+    "C:\\Users\\octavius.alimari\\.nuget\\packages\\microsoft.netcore.dotnethostresolver\\2.0.0\\microsoft.netcore.dotnethostresolver.2.0.0.nupkg.sha512",
+    "C:\\Users\\octavius.alimari\\.nuget\\packages\\microsoft.netcore.platforms\\3.0.0-preview.19073.11\\microsoft.netcore.platforms.3.0.0-preview.19073.11.nupkg.sha512",
+    "C:\\Users\\octavius.alimari\\.nuget\\packages\\microsoft.win32.systemevents\\4.6.0-preview.19073.11\\microsoft.win32.systemevents.4.6.0-preview.19073.11.nupkg.sha512",
+    "C:\\Users\\octavius.alimari\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
+    "C:\\Users\\octavius.alimari\\.nuget\\packages\\opentk\\1.1.2225\\opentk.1.1.2225.nupkg.sha512",
+    "C:\\Users\\octavius.alimari\\.nuget\\packages\\rlnet\\1.0.6\\rlnet.1.0.6.nupkg.sha512",
+    "C:\\Users\\octavius.alimari\\.nuget\\packages\\roguesharp\\3.0.0\\roguesharp.3.0.0.nupkg.sha512",
+    "C:\\Users\\octavius.alimari\\.nuget\\packages\\runtime.win-x86.microsoft.netcore.app\\2.0.0\\runtime.win-x86.microsoft.netcore.app.2.0.0.nupkg.sha512",
+    "C:\\Users\\octavius.alimari\\.nuget\\packages\\runtime.win-x86.microsoft.netcore.dotnetapphost\\2.0.0\\runtime.win-x86.microsoft.netcore.dotnetapphost.2.0.0.nupkg.sha512",
+    "C:\\Users\\octavius.alimari\\.nuget\\packages\\runtime.win-x86.microsoft.netcore.dotnethostpolicy\\2.0.0\\runtime.win-x86.microsoft.netcore.dotnethostpolicy.2.0.0.nupkg.sha512",
+    "C:\\Users\\octavius.alimari\\.nuget\\packages\\runtime.win-x86.microsoft.netcore.dotnethostresolver\\2.0.0\\runtime.win-x86.microsoft.netcore.dotnethostresolver.2.0.0.nupkg.sha512",
+    "C:\\Users\\octavius.alimari\\.nuget\\packages\\system.drawing.common\\4.5.0\\system.drawing.common.4.5.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'OpenTK 1.1.2225' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v2.0'. This package may not be fully compatible with your project.",
+      "libraryId": "OpenTK",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'RLNET 1.0.6' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v2.0'. This package may not be fully compatible with your project.",
+      "libraryId": "RLNET",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'RogueSharp 3.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v2.0'. This package may not be fully compatible with your project.",
+      "libraryId": "RogueSharp",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.0"
+      ]
+    }
+  ]
+}

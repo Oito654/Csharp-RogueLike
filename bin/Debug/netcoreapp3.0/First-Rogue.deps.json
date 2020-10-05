@@ -11,7 +11,8 @@
           "Microsoft.Win32.SystemEvents": "4.6.0-preview.19073.11",
           "OpenTK": "1.1.2225",
           "RLNET": "1.0.6",
-          "RogueSharp": "3.0.0"
+          "RogueSharp": "3.0.0",
+          "System.Drawing.Common": "4.5.0"
         },
         "runtime": {
           "First-Rogue.dll": {}
@@ -63,6 +64,32 @@
             "fileVersion": "3.0.0.0"
           }
         }
+      },
+      "System.Drawing.Common/4.5.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "3.0.0-preview.19073.11",
+          "Microsoft.Win32.SystemEvents": "4.6.0-preview.19073.11"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Drawing.Common.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.26515.6"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp2.0/System.Drawing.Common.dll": {
+            "rid": "unix",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.26515.6"
+          },
+          "runtimes/win/lib/netcoreapp2.0/System.Drawing.Common.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.26515.6"
+          }
+        }
       }
     }
   },
@@ -106,6 +133,13 @@
       "sha512": "sha512-f1Zn6bkgL342FB4yVKO+DcmhL6R9wRCwuY/xZz5zybuQe9FjF3DPWPT33mj9QlNEiakOqJ9NhVmhO+23Ze0fGQ==",
       "path": "roguesharp/3.0.0",
       "hashPath": "roguesharp.3.0.0.nupkg.sha512"
+    },
+    "System.Drawing.Common/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-AiJFxxVPdeITstiRS5aAu8+8Dpf5NawTMoapZ53Gfirml24p7HIfhjmCRxdXnmmf3IUA3AX3CcW7G73CjWxW/Q==",
+      "path": "system.drawing.common/4.5.0",
+      "hashPath": "system.drawing.common.4.5.0.nupkg.sha512"
     }
   }
 }

@@ -1,0 +1,13 @@
+C:\Users\octavius.alimari\source\repos\First-Rogue\bin\Release\netcoreapp2.0\terminal8x8.png
+C:\Users\octavius.alimari\source\repos\First-Rogue\bin\Release\netcoreapp2.0\First-Rogue.deps.json
+C:\Users\octavius.alimari\source\repos\First-Rogue\bin\Release\netcoreapp2.0\First-Rogue.runtimeconfig.json
+C:\Users\octavius.alimari\source\repos\First-Rogue\bin\Release\netcoreapp2.0\First-Rogue.runtimeconfig.dev.json
+C:\Users\octavius.alimari\source\repos\First-Rogue\bin\Release\netcoreapp2.0\First-Rogue.dll
+C:\Users\octavius.alimari\source\repos\First-Rogue\bin\Release\netcoreapp2.0\First-Rogue.pdb
+C:\Users\octavius.alimari\source\repos\First-Rogue\obj\Release\netcoreapp2.0\First-Rogue.csprojAssemblyReference.cache
+C:\Users\octavius.alimari\source\repos\First-Rogue\obj\Release\netcoreapp2.0\First-Rogue.csproj.CoreCompileInputs.cache
+C:\Users\octavius.alimari\source\repos\First-Rogue\obj\Release\netcoreapp2.0\First-Rogue.AssemblyInfoInputs.cache
+C:\Users\octavius.alimari\source\repos\First-Rogue\obj\Release\netcoreapp2.0\First-Rogue.AssemblyInfo.cs
+C:\Users\octavius.alimari\source\repos\First-Rogue\obj\Release\netcoreapp2.0\First-Rogue.dll
+C:\Users\octavius.alimari\source\repos\First-Rogue\obj\Release\netcoreapp2.0\First-Rogue.pdb
+C:\Users\octavius.alimari\source\repos\First-Rogue\obj\Release\netcoreapp2.0\First-Rogue.genruntimeconfig.cache

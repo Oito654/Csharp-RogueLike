@@ -2,7 +2,6 @@ C:\Users\octavius.alimari\source\repos\First-Rogue\bin\Debug\netcoreapp3.1\First
 C:\Users\octavius.alimari\source\repos\First-Rogue\obj\Debug\netcoreapp3.1\First-Rogue.csprojAssemblyReference.cache
 C:\Users\octavius.alimari\source\repos\First-Rogue\obj\Debug\netcoreapp3.1\First-Rogue.AssemblyInfoInputs.cache
 C:\Users\octavius.alimari\source\repos\First-Rogue\obj\Debug\netcoreapp3.1\First-Rogue.AssemblyInfo.cs
-C:\Users\octavius.alimari\source\repos\First-Rogue\bin\Debug\netcoreapp3.1\OpenTK.dll
 C:\Users\octavius.alimari\source\repos\First-Rogue\obj\Debug\netcoreapp3.1\First-Rogue.csproj.CopyComplete
 C:\Users\octavius.alimari\source\repos\First-Rogue\bin\Debug\netcoreapp3.1\RLNET.dll
 C:\Users\octavius.alimari\source\repos\First-Rogue\bin\Debug\netcoreapp3.1\First-Rogue.deps.json
@@ -17,4 +16,8 @@ C:\Users\octavius.alimari\source\repos\First-Rogue\obj\Debug\netcoreapp3.1\First
 C:\Users\octavius.alimari\source\repos\First-Rogue\bin\Debug\netcoreapp3.1\terminal8x8.png
 C:\Users\octavius.alimari\source\repos\First-Rogue\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
 C:\Users\octavius.alimari\source\repos\First-Rogue\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\octavius.alimari\source\repos\First-Rogue\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+C:\Users\octavius.alimari\source\repos\First-Rogue\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\octavius.alimari\source\repos\First-Rogue\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\octavius.alimari\source\repos\First-Rogue\bin\Debug\netcoreapp3.1\OpenTK.dll
 C:\Users\octavius.alimari\source\repos\First-Rogue\obj\Debug\netcoreapp3.1\First-Rogue.csproj.CoreCompileInputs.cache
