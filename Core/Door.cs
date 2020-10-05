@@ -25,7 +25,7 @@ namespace First_Rogue.Core
 
         public void Draw(RLConsole console, IMap map)
         {
-            if(map.GetCell(X, Y).IsExplored)
+            if(!map.GetCell(X, Y).IsExplored)
             {
                 return;
             }

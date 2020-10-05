@@ -52,15 +52,6 @@ namespace First_Rogue.Core.Systems
                 }
             }
 
-            foreach (Rectangle room in _map.Rooms)
-            {
-                CreateRoom(room);
-                CreateDoors(room);
-            }
-
-            PlacePlayer();
-            PlaceMonsters();
-
             for(int c = 1; c < _map.Rooms.Count; c++)
             {
                 int previousRoomCenterX = _map.Rooms[c - 1].Center.X;
@@ -79,6 +70,15 @@ namespace First_Rogue.Core.Systems
                     CreateHorizontalTunnel(previousRoomCenterX, currentRoomCenterX, currentRoomCenterY);
                 }
             }
+
+            foreach (Rectangle room in _map.Rooms)
+            {
+                CreateRoom(room);
+                CreateDoors(room);
+            }
+
+            PlacePlayer();
+            PlaceMonsters();
 
             return _map;
         }
