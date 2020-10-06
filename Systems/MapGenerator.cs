@@ -20,7 +20,7 @@ namespace First_Rogue.Core.Systems
         private readonly DungeonMap _map;
 
         public MapGenerator(int width, int height, 
-            int maxRooms, int roomMaxSize, int roomMinSIze)
+            int maxRooms, int roomMaxSize, int roomMinSIze, int mapLevel)
         {
             _width = width;
             _height = height;
@@ -77,6 +77,7 @@ namespace First_Rogue.Core.Systems
                 CreateDoors(room);
             }
 
+            CreateStairs();
             PlacePlayer();
             PlaceMonsters();
 
@@ -206,6 +207,23 @@ namespace First_Rogue.Core.Systems
             }
 
             return false;
+        }
+
+        private void CreateStairs()
+        {
+            _map.StairsUp = new Stairs
+            {
+                X = _map.Rooms.First().Center.X + 1,
+                Y = _map.Rooms.First().Center.Y,
+                IsUp = true
+            };
+
+            _map.StairsDown = new Stairs
+            {
+                X = _map.Rooms.Last().Center.X,
+                Y = _map.Rooms.Last().Center.Y,
+                IsUp = false
+            };
         }
     }
 }

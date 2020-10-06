@@ -33,6 +33,7 @@ namespace First_Rogue
         private static readonly int _inventoryWidth = 80;
         private static readonly int _inventoryHeight = 11;
         private static RLConsole _inventoryConsole;
+        private static int _mapLevel = 1;
 
         public static Player Player { get; set; }
         public static DungeonMap DungeonMap { get; private set; }
@@ -53,12 +54,12 @@ namespace First_Rogue
             int seed = (int)DateTime.UtcNow.Ticks;
             Random = new DotNetRandom(seed);
 
-            string consoleTitle = $"RogueLike Test - Level 1 - Seed {seed}";
+            string consoleTitle = $"RogueLike Test - Level {_mapLevel} - Seed {seed}";
 
             CommandSystem = new CommandSystem();
             SchedulingSystem = new SchedulingSystem();
 
-            MapGenerator mapGenerator = new MapGenerator(_mapWidth, _mapHeight, 20, 13, 7 );
+            MapGenerator mapGenerator = new MapGenerator(_mapWidth, _mapHeight, 20, 13, 7, _mapLevel );
             DungeonMap = mapGenerator.CreateMap();
             DungeonMap.UpdatePlayerFieldOfView();
 
@@ -117,6 +118,18 @@ namespace First_Rogue
                     else if (keyPress.Key == RLKey.Escape)
                     {
                         _rootConsole.Close();
+                    }
+                    else if(keyPress.Key == RLKey.Period)
+                    {
+                        if (DungeonMap.CanMoveDownToNextLevel())
+                        {
+                            MapGenerator mapGenerator = new MapGenerator(_mapWidth, _mapHeight, 20, 13, 7, ++_mapLevel);
+                            DungeonMap = mapGenerator.CreateMap();
+                            MessageLog = new MessageLog();
+                            CommandSystem = new CommandSystem();
+                            _rootConsole.Title = $"RougeSharp RLNet Tutorial - Level {_mapLevel}";
+                            didPlayerAct = true;
+                        }
                     }
                 }
 

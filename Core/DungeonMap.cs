@@ -12,9 +12,12 @@ namespace First_Rogue.Core
         public readonly List<Monster> _monsters;
         public List<Rectangle> Rooms;
         public List<Door> Doors { get; set; }
+        public Stairs StairsUp { get; set; }
+        public Stairs StairsDown { get; set; }
 
         public DungeonMap()
         {
+            Game.SchedulingSystem.Clear();
             Rooms = new List<Rectangle>();
             _monsters = new List<Monster>();
             Doors = new List<Door>();
@@ -58,6 +61,8 @@ namespace First_Rogue.Core
             {
                 door.Draw(mapConsole, this);
             }
+            StairsUp.Draw(mapConsole, this);
+            StairsDown.Draw(mapConsole, this);
         }
 
         private void SetConsoleSymbolForCell(RLConsole console, Cell cell)
@@ -203,6 +208,12 @@ namespace First_Rogue.Core
                 }
 
             }
+        }
+
+        public bool CanMoveDownToNextLevel()
+        {
+            Player player = Game.Player;
+            return StairsDown.X == player.X && StairsDown.Y == player.Y;
         }
     }
 }
