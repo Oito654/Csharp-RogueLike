@@ -164,6 +164,7 @@ namespace First_Rogue.Systems
             }
             else if(defender is Monster)
             {
+                Game.DungeonMap.AddGold(defender.X, defender.Y, defender.Gold);
                 Game.DungeonMap.RemoveMonster((Monster)defender);
 
                 Game.MessageLog.Add($" {defender.Name} morreu e derrubou {defender.Gold} ouro");

@@ -20,6 +20,7 @@ namespace First_Rogue.Monsters
                 Color = Colors.KoboldColor,
                 Defense = Dice.Roll("1D3") + level / 3,
                 DefenseChance = Dice.Roll("10D4"),
+                Gold = Dice.Roll("5D5"),
                 Health = health,
                 MaxHealth = health,
                 Name = "Kobold",

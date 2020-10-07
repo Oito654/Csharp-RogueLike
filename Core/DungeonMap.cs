@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using System.Text;
 using RLNET;
 using System.Linq;
+using First_Rogue.Interfaces;
 
 namespace First_Rogue.Core
 {
     public class DungeonMap : Map
     {
-        public readonly List<Monster> _monsters;
+        private readonly List<Monster> _monsters;
+        private readonly List<TreasurePile> _treasurePiles;
         public List<Rectangle> Rooms;
         public List<Door> Doors { get; set; }
         public Stairs StairsUp { get; set; }
@@ -20,6 +22,7 @@ namespace First_Rogue.Core
             Game.SchedulingSystem.Clear();
             Rooms = new List<Rectangle>();
             _monsters = new List<Monster>();
+            _treasurePiles = new List<TreasurePile>();
             Doors = new List<Door>();
         }
 
@@ -63,6 +66,12 @@ namespace First_Rogue.Core
             }
             StairsUp.Draw(mapConsole, this);
             StairsDown.Draw(mapConsole, this);
+
+            foreach(TreasurePile treasurePile in _treasurePiles)
+            {
+                IDrawable drawableTreasure = treasurePile.Treasure as IDrawable;
+                drawableTreasure?.Draw(mapConsole, this);
+            }
         }
 
         private void SetConsoleSymbolForCell(RLConsole console, Cell cell)
@@ -122,6 +131,19 @@ namespace First_Rogue.Core
         {
             Cell cell = GetCell(x, y);
             SetCellProperties(cell.X, cell.Y, cell.IsTransparent, isWalkable, cell.IsExplored);
+        }
+
+        public void AddGold(int x, int y, int amount)
+        {
+            if(amount > 0)
+            {
+                AddTreasure(x, y, new Gold(amount));
+            }
+        }
+
+        public void AddTreasure(int x, int y, ITreasure treasure)
+        {
+            _treasurePiles.Add(new TreasurePile(x, y, treasure));
         }
 
         public void AddPlayer(Player player)
@@ -207,6 +229,18 @@ namespace First_Rogue.Core
                     Game.MessageLog.Add($"{actor.Name} abriu a porta");
                 }
 
+            }
+        }
+
+        private void PickUpTreasure(Actor actor, int x, int y)
+        {
+            List<TreasurePile> treasureAtLocation = _treasurePiles.Where(g => g.X == x && g.Y == y).ToList();
+            foreach(TreasurePile treasurePile in treasureAtLocation)
+            {
+                if (treasurePile.Treasure.PickUp(actor))
+                {
+                    _treasurePiles.Remove(treasurePile);
+                }
             }
         }
 

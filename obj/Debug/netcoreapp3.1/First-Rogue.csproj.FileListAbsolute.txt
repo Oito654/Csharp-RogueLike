@@ -20,4 +20,3 @@ C:\Users\octavius.alimari\source\repos\First-Rogue\bin\Debug\netcoreapp3.1\Syste
 C:\Users\octavius.alimari\source\repos\First-Rogue\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
 C:\Users\octavius.alimari\source\repos\First-Rogue\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 C:\Users\octavius.alimari\source\repos\First-Rogue\bin\Debug\netcoreapp3.1\OpenTK.dll
-C:\Users\octavius.alimari\source\repos\First-Rogue\obj\Debug\netcoreapp3.1\First-Rogue.csproj.CoreCompileInputs.cache
